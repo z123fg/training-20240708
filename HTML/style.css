@@ -1,3 +1,69 @@
+body {
+  background-color: white;
+  height: 200vh;
+}
+
 #div1.hello {
-    background-color: salmon;
+  background-color: salmon;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: bisque;
+  border: 10px black solid;
+  font-size: 2em;
+  /* flex-grow: 1; */
+  /* padding: 20px;
+  box-sizing: border-box;
+  margin: 50px; */
+}
+
+.static {
+  top: 20px;
+}
+
+.relative {
+  position: relative;
+  top: 20px;
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 50px;
+}
+
+.fixed {
+  position: fixed;
+  right: 0;
+  top: 50px;
+}
+
+.sticky {
+  position: sticky;
+  left: 200px;
+  top: 50px;
+}
+
+.container {
+  display: grid;
+  /* height: 500px; */
+  /* flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center; */
+  grid-template-columns: 100px 100px 100px 100px;
+}
+
+#box1 {
+  /* flex-grow: 2; */
+  /* display: none; */
+  visibility: hidden;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
 }

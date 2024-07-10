@@ -46,7 +46,21 @@
         css specificity: priority of selectors
             combinator selector > id > class > type(tag)
             !important
-
+        css box model (box sizing)
+            content-box (default)
+            border-box
+        position
+        flexbox
+        grid
+        units
+            px
+            %
+            vh
+            rem
+            em
+        visibility
+        media query
+        BEM
 
 
 
