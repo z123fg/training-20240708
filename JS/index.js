@@ -1,3 +1,4 @@
+// ================================= JS1 =================================
 /*
 primitive data types
 
@@ -137,33 +138,212 @@ symbol
 // b.a = 1;
 // b.a = 2;
 
-foo();
-function foo() {} // will do hoisting
+// foo();
+// function foo() {} // will do hoisting
 
-foo2();
-var foo2 = () => {}; // no hoisting
+// foo2();
+// var foo2 = () => {}; // no hoisting
 
-foo3();
-var foo3 = function () {}; // function expression, no hoisting
+// foo3();
+// var foo3 = function () {}; // function expression, no hoisting
 
-// closure, create private variables
+// // closure, create private variables
 
-function add() {
-  let count = 0;
-  return {
-    increment: function () {
-      count++;
-      console.log(count);
-    },
-    decrement: function () {
-      count--;
-      console.log(count);
-    },
-  };
-}
+// function add() {
+//   let count = 0;
+//   return {
+//     increment: function () {
+//       count++;
+//       console.log(count);
+//     },
+//     decrement: function () {
+//       count--;
+//       console.log(count);
+//     },
+//   };
+// }
 
-const obj = add();
+// const obj = add();
 
-obj.increment();
-obj.increment();
-obj.decrement();
+// obj.increment();
+// obj.increment();
+// obj.decrement();
+
+// ================================= JS2 =================================
+
+// ES - ECMAScript: syntax standard, you cannot use it alone, es6 (2015)
+// JavaScript - ECMAScript + WebApi
+// NodeJS - ECMAScript + NodeApi
+
+// ES6
+// rest operator, spread operator, destructuring, arrow function, string template, for ... of, promise, class
+
+// rest operator ... : collect arguments and put them into one array
+
+// function foo(val1, val2, ...args) {
+//   console.log(arguments); // array-like object
+//   console.log(val1, val2, args);
+// }
+
+// foo(1, 2, 3, 4, 5, 6, 7);
+
+// spread operator ...
+// shallow copy: the properties will point to the same reference as the original one (objects)
+// deep copy: 1. create a function, use for loop, while loop, recursion
+// 2. lodash
+// 3. JSON.stringify, JSON.parse
+
+// const person = {
+//   name: "nicole",
+//   phone: 123123,
+//   address: {
+//     street: "123123",
+//     city: "xxx",
+//   },
+//   foo: () => {},
+//   date: new Date(),
+// };
+
+// const person1 = {
+//   name: person.name,
+//   phone: person.phone,
+//   address: person.address,
+// };
+
+// const person2 = { ...person };
+
+// console.log(person.address === person2.address);
+
+// const arr = [1, 2, 3, [4]];
+// const arr2 = [...arr];
+// const arr3 = [10, ...arr, 0, ...arr2, 9];
+// console.log(arr3);
+
+// const person3 = JSON.parse(JSON.stringify(person));
+// // console.log(person);
+// console.log(person3);
+
+// destructuring
+// const person = {
+//   name: "nicole",
+//   phone: "0000000000",
+//   address: {
+//     street: "123123",
+//     city: "xxx",
+//   },
+//   foo: () => {},
+//   date: new Date(),
+// };
+
+// const name = person.name;
+// const phone = person.phone;
+// const arr = [1, 2, 3, [4]];
+// const { name, phone: phone1 } = person;
+// const [val1, _, val3] = arr;
+
+// console.log(name, phone1);
+// console.log(val1, val3);
+
+// arrow function vs function
+// 1. syntax
+// 2. "this"
+// 3. arguments
+
+// const obj = {
+//   name: "nicole",
+//   foo() {
+//     console.log(this);
+//   },
+// };
+
+// obj.foo();
+
+// const obj2 = {
+//   name: "nicole",
+//   foo: () => {
+//     console.log(this);
+//   },
+// };
+// window.foo();
+
+// console.log(this);
+
+// function foo() {
+//   console.log(this);
+// }
+
+// foo();
+
+// const obj = {
+//   name: "nicole",
+//   foo() {
+//     console.log(this);
+//     const foo2 = () => {
+//       console.log(this);
+//     };
+//     foo2();
+//   },
+// };
+
+// obj.foo();
+
+// bind
+// this.x = 9;
+// const module = {
+//   x: 81,
+//   getX() {
+//     return this.x;
+//   },
+// };
+
+// // The 'this' parameter of 'getX' is bound to 'module'.
+// console.log(module.getX()); // 81
+
+// const retrieveX = module.getX;
+// // The 'this' parameter of 'retrieveX' is bound to 'globalThis' in non-strict mode.
+// console.log(retrieveX()); // 9
+
+// // Create a new function 'boundGetX' with the 'this' parameter bound to 'module'.
+// const boundGetX = retrieveX.bind(module);
+// console.log(boundGetX()); // 81
+
+// call (receives this, and arguements), apply (receives this, and arguments in an array)
+
+// const foo = (val1, val2) => {
+//   console.log(arguments);
+// };
+
+// foo(1, 2);
+
+// const obj = {
+//   name: "nicole",
+//   greeting() {
+//     console.log(`hello ${this.name}`);
+//   },
+// };
+
+// obj.name = "adam";
+// obj.greeting();
+
+// for...of: iterate over an iterable object
+// iterable: array, map, set, nodelist, string
+// for..in: iterate over enumarable properties of an object
+// const arr = [1, 2, 3];
+// // for (const element of arr) {
+// //   console.log(element);
+// // }
+
+// const obj = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+// };
+
+// // for (const element of Object.entries(obj)) {
+// //   console.log(element);
+// // }
+
+// for (const element in arr) {
+//   console.log(element);
+// }
+// console.log(arr);
