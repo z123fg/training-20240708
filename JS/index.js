@@ -347,3 +347,190 @@ symbol
 //   console.log(element);
 // }
 // console.log(arr);
+
+// ================================= JS3 =================================
+// const p = {
+//   greeting() {
+//     console.log(`hello ${this.name}`);
+//   },
+// };
+
+// const person = {
+//   name: "nicole",
+//   __proto__: p,
+// };
+
+// const person2 = {
+//   name: "adam",
+//   __proto__: p,
+// };
+
+// person.phone = "00000";
+
+// // person.__proto__.greeting = function () {
+// //   console.log(`hello ${this.name}`);
+// // };
+// console.log(person);
+// person.greeting();
+
+// person2.greeting();
+
+// const obj = {
+//   a: 1,
+//   b: 1,
+//   __proto__: {
+//     b: 2,
+//   },
+// };
+
+// console.log(obj.b);
+
+// constructor function
+// function Person(name) {
+//   this.name = name;
+//   this.greeting = function () {
+//     console.log(`hello ${this.name}`);
+//   };
+// }
+
+// class Person
+// person1 is an instance of Person
+// person2 is also an instance of Person
+// person1.__proto__.phone => this is adding the phone property on Person class
+
+// const person1 = new Person("nicole");
+// const person2 = new Person("adam");
+// console.log(person1);
+// person1.greeting();
+
+// person1.__proto__.phone = "000000";
+// Person.prototype.walk = function () {
+//   console.log(`${this.name} is walking...`);
+// };
+
+// console.log(person1);
+// person1.walk();
+// console.log(person2);
+
+// // factory function
+// function Person2(name) {
+//   const obj = {};
+//   obj.name = name;
+//   obj.greeting = function () {
+//     console.log(`hello ${this.name}`);
+//   };
+//   return obj;
+// }
+
+// const p1 = Person2("nicole");
+// console.log(p1);
+
+// class keyword
+// inheritance, encapsulation, abstraction, polymorphism
+// inheritance - super, extends
+// encapsulation - hide information from public, make some variables to be private
+// abstraction - no instance, used for inheritance, not supported in Javascript
+// polymorphism - no overloading, but we do have overriding
+
+// class Person {
+//   #age;
+//   constructor(name, age) {
+//     this.name = name;
+//     this.#age = age;
+//   }
+
+//   greeting() {
+//     console.log(`hello ${this.name}`);
+//   }
+
+//   // greeting(name2){
+//   //   console.log(`hello ${this.name} and ${name2}`);
+//   // }
+
+//   get age() {
+//     console.log("in getter");
+//     return this.#age;
+//   }
+
+//   set age(newAge) {
+//     console.log("in setter");
+//     this.#age = newAge;
+//   }
+// }
+
+// const p1 = new Person("nicole");
+// console.log(p1);
+// p1.greeting("adam");
+
+// class Student extends Person {
+//   constructor(name, age, id) {
+//     super(name, age);
+//     this.id = id;
+//   }
+
+//   greeting() {
+//     console.log(`hello student ${this.name}`);
+//   }
+// }
+
+// const s1 = new Student("nicole", 18, 1);
+// console.log(s1.age);
+// s1.greeting();
+
+// const arr = [1, 2, 3, 4, 5];
+// console.log(arr);
+
+// arr.forEach((value, index, array) => {
+//   console.log(value, index, array);
+// });
+
+// arr.__proto__.myForEach = function (cb) {
+//   for (let i = 0; i < this.length; i++) {
+//     cb(this[i], i, this);
+//   }
+// };
+
+// arr.myForEach((value, index, array) => {
+//   console.log(value, index, array);
+// });
+
+// homework: filter, map, reduce, find, slice, splice, push, pop
+
+const arr = [1, 2, 3, 4, 5];
+// arr.splice(1, 2, "nicole");
+// console.log(removedElements);
+// console.log(arr);
+
+Array.prototype.mySplice = function (start, deleteCount, ...items) {
+  let tempArr = [];
+  let deletedElements = [];
+  if (deleteCount === undefined && items.length === 0) {
+    tempArr = [...this.slice(0, start)];
+    deletedElements = [...this.slice(start)];
+  }
+  if (deleteCount !== undefined) {
+    deletedElements = this.slice(start, start + deleteCount);
+    tempArr = [...this.slice(0, start), ...this.slice(start + deleteCount)];
+  }
+
+  if (items.length !== 0) {
+    tempArr = [
+      ...this.slice(0, start),
+      ...items,
+      ...this.slice(start + (deleteCount !== undefined ? deleteCount : 0)),
+    ];
+  }
+
+  this.length = tempArr.length;
+  tempArr.forEach((value, index) => {
+    this[index] = value;
+  });
+  return deletedElements;
+};
+
+const removedElements = arr.mySplice(1);
+console.log(removedElements); // [2,3,4,5]
+console.log(arr); // [1]
+
+// delete Array.prototype.mySplice;
+// console.log(arr);
