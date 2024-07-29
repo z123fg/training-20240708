@@ -6,6 +6,8 @@
 // IIFE - immediately invoked function expression
 //
 
+console.log($);
+
 const APIs = (() => {
   const baseURL = "http://localhost:3000/todos";
   const getTodos = () => {

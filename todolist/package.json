@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "json-server": "npx json-server db.json",
-    "live-server" : "live-server --ignore=./db.json ."
+    "live-server" : "live-server --ignore=./db.json .",
+    "start": "npm run json-server & npm run live-server"
   },
   "keywords": [],
   "author": "",
