@@ -28,9 +28,9 @@ export default function Counter() {
     // });
   }
 
-  // no dependency array -> triggered during mounting and updating
-  // empty dependency array -> only triggered during mounting
-  // non-empty -> triggered when any of the variables in dependency array changes
+  // no dependency array -> triggered during mounting and updating => componentDidMount and componentDidUpdate
+  // empty dependency array -> only triggered during mounting => componentDidMount
+  // non-empty -> triggered when any of the variables in dependency array changes => componentDidMount and componentDidUpdate
 
   // useEffect(() => {
   //   console.log("in useEffect");
@@ -57,7 +57,7 @@ export default function Counter() {
   // useEffect(() => {
   //   console.log("initial load");
   //   return () => {
-  //     console.log("clean up"); // will run during unmounting
+  //     console.log("clean up"); // will run during unmounting => componentWillUnmount
   //   };
   // }, []);
 

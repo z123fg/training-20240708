@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import useCounter from "../../hooks/useCounter";
+import { TodoContext } from "../../context/TodoContext";
+import Counter from "../Counter/Counter";
 
-export default function Todo({ todo, deleteHandler }) {
+// hoc, custom hook
+// React.memo -> hoc (higher order component)
+
+const MemoTodo = React.memo(function Todo({ todo, deleteHandler }) {
+  console.log("todo", todo.title);
   const [count, setCount] = useCounter(2);
   return (
     <div>
@@ -10,4 +16,6 @@ export default function Todo({ todo, deleteHandler }) {
       <div>todo count: {count}</div>
     </div>
   );
-}
+});
+
+export default MemoTodo;
