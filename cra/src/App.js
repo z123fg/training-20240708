@@ -3,7 +3,7 @@ import "./App.css";
 import Todo from "./components/Todo/Todo";
 import { useContext, useEffect, useState } from "react";
 import Counter from "./components/Counter/Counter";
-import { TodoContext } from "./context/TodoContext";
+import TodoContextProvider, { TodoContext } from "./context/TodoContext";
 import ClassComponent from "./components/ClassComponent/ClassComponent";
 import TodoApp from "./components/Todo/TodoApp";
 
@@ -23,11 +23,13 @@ import TodoApp from "./components/Todo/TodoApp";
 export default function App() {
   const [show, setShow] = useState(true);
   return (
-    <div>
-      {/* {show && <ClassComponent title="class component" />}
+    <TodoContextProvider>
+      <div>
+        {/* {show && <ClassComponent title="class component" />}
       <button onClick={() => setShow(!show)}>toggle show</button> */}
 
-      <TodoApp />
-    </div>
+        <TodoApp />
+      </div>
+    </TodoContextProvider>
   );
 }

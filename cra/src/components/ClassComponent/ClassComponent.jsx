@@ -42,6 +42,10 @@ class ClassComponent extends Component {
     count: [0, 0, 0],
   };
 
+  foo() {
+    console.log(this);
+  }
+
   addOneToCounter = (index) => {
     this.setState({
       count: this.state.count.map((countNum, i) => {
@@ -68,6 +72,7 @@ class ClassComponent extends Component {
       <div>
         Class Component
         <button onClick={this.handleAddOne}>Add one</button>
+        <button onClick={this.foo.bind(this)}>this</button>
         {this.state.count.map((count, index) => (
           <Counter
             count={count}
