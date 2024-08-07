@@ -54,7 +54,14 @@ export default function TodoApp() {
   return (
     <div>
       <div>Todo Counter: {count}</div>
-      <button onClick={() => dispatch({ type: "add" })}>
+      <button
+        onClick={() => {
+          dispatch({ type: "add" });
+          console.log(count);
+          dispatch({ type: "add" });
+          console.log(count);
+        }}
+      >
         add one to todo counter
       </button>
       <TodoForm addNewTodo={addNewTodo} />
