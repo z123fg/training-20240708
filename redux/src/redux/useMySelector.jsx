@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import store from ".";
+import store from "./store";
 
 export default function useMySelector(selectorFn) {
   const [selectedState, setSelectedState] = useState(

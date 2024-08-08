@@ -1,42 +1,14 @@
-import { createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import { thunk } from "redux-thunk";
+import { carsReducer } from "./slices/CarsSlice";
+import { counterReducer } from "./slices/CounterSlice";
 
-const carsInitialValue = [
-  {
-    id: 1,
-    name: "toyota",
-    quantity: 10,
-  },
-  {
-    id: 2,
-    name: "nissan",
-    quantity: 10,
-  },
-  {
-    id: 3,
-    name: "ford",
-    quantity: 10,
-  },
-];
+const rootReducer = combineReducers({
+  cars: carsReducer,
+  counter: counterReducer,
+});
 
-const carsReducer = (state = carsInitialValue, { type, payload }) => {
-  switch (type) {
-    case "SELL":
-      return state.map((car) => {
-        if (car.id === payload) {
-          return {
-            ...car,
-            quantity: car.quantity - 1,
-          };
-        } else {
-          return car;
-        }
-      });
-    default:
-      return state;
-  }
-};
-
-const store = createStore(carsReducer, carsInitialValue);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const createMyStore = (reducer, preloadedState = {}, enhancer = undefined) => {
   if (enhancer) {
