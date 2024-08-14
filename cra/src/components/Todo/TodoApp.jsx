@@ -2,6 +2,7 @@ import { useCallback, useContext, useMemo, useReducer, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoContextProvider, { TodoContext } from "../../context/TodoContext";
 import MemoTodo from "./Todo";
+import { useParams } from "react-router-dom";
 
 // useMemo -> cache a calculated value
 // useCallback -> cache a function
@@ -23,6 +24,8 @@ const countReducer = (state, action) => {
 };
 
 export default function TodoApp() {
+  const { id } = useParams();
+  console.log("routing", id);
   const { todos, addNewTodo, deleteHandler } = useContext(TodoContext);
   const [show, setShow] = useState(true);
   // const [count, setCount] = useState(0);
