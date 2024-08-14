@@ -13,6 +13,7 @@ export default function SearchBar({ onSubmit, books, setSelectedBook }) {
   // throttle - limit the frequency of a fucntion call
   const handleChange = (e) => {
     setInputValue(e.target.value);
+    console.log(typeof e.target.value);
   };
 
   const debouncedOnSubmit = useCallback(_.debounce(onSubmit, 1000), [onSubmit]);
