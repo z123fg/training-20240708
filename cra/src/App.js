@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Todo from "./components/Todo/Todo";
 import { useContext, useEffect, useState } from "react";
-import Counter from "./components/Counter/Counter";
+import Counter from "./components/UnitTesting/Counter";
 import TodoContextProvider, { TodoContext } from "./context/TodoContext";
 import ClassComponent from "./components/ClassComponent/ClassComponent";
 import TodoApp from "./components/Todo/TodoApp";
@@ -42,34 +42,35 @@ import { Link, Route, Routes } from "react-router-dom";
 export default function App() {
   const [show, setShow] = useState(true);
   return (
-    <TodoContextProvider>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/todo">Todo</Link>
-          </li>
-          <li>
-            <Link to="/counter">Counter</Link>
-          </li>
-        </ul>
-      </nav>
-      <div>
-        {/* {show && <ClassComponent title="class component" />}
-      <button onClick={() => setShow(!show)}>toggle show</button> */}
+    <Counter />
+    // <TodoContextProvider>
+    //   <nav>
+    //     <ul>
+    //       <li>
+    //         <Link to="/">Home</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/todo">Todo</Link>
+    //       </li>
+    //       <li>
+    //         <Link to="/counter">Counter</Link>
+    //       </li>
+    //     </ul>
+    //   </nav>
+    //   <div>
+    //     {/* {show && <ClassComponent title="class component" />}
+    //   <button onClick={() => setShow(!show)}>toggle show</button> */}
 
-        <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/todo" element={<TodoApp />} />
-          <Route path="/todo/test" element={<h1>Test</h1>} />
-          <Route path="/todo/:id" element={<TodoApp />} />
-          <Route path="/counter" element={<Counter />} />
-          <Route path="*" element={<h1>Page not found</h1>} />
-        </Routes>
-        {/* <TodoApp /> */}
-      </div>
-    </TodoContextProvider>
+    //     <Routes>
+    //       <Route path="/" element={<h1>Home</h1>} />
+    //       <Route path="/todo" element={<TodoApp />} />
+    //       <Route path="/todo/test" element={<h1>Test</h1>} />
+    //       <Route path="/todo/:id" element={<TodoApp />} />
+    //       <Route path="/counter" element={<Counter />} />
+    //       <Route path="*" element={<h1>Page not found</h1>} />
+    //     </Routes>
+    //     {/* <TodoApp /> */}
+    //   </div>
+    // </TodoContextProvider>
   );
 }
